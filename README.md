@@ -1,14 +1,13 @@
-# noise
+# noise-2d
 
-> 2D Perlin simplex noise (forked from [`perlin-simplex`](https://github.com/davidguttman/perlin-simplex))
+> 2D Perlin simplex noise
 
-## Improvements from original library
+## :sparkles: Features
  
-  - Seedable (TODO)
-  - 2D noise only
+  - Seedable
   - Fully typed
   - ESM
-  - Smaller bundle size
+  - Supports custom random generators
   
 ## How to use
 
@@ -16,4 +15,10 @@ TODO
 
 ## Install
 
-TODO
+```sh
+npm install noise-2d
+```
+
+## Credits
+
+This library started out as a fork of [`perlin-simplex`](https://github.com/davidguttman/perlin-simplex)
