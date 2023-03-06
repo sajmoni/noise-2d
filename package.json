@@ -1,0 +1,25 @@
+{
+  "name": "noise-2d",
+  "version": "0.0.0",
+  "description": "2D Perlin simplex noise",
+  "keywords": [],
+  "license": "MIT",
+  "author": "sajmoni",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prettier": "prettier-config-one",
+  "devDependencies": {
+    "prettier": "2.8.4",
+    "prettier-config-one": "0.1.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,5 +1,6 @@
 /**
  * This is a fork of the `perlin-simplex` library https://github.com/davidguttman/perlin-simplex
+ * Changes:
  *  - Works with ESM
  *  - Does not modify prototype
  *  - Type-safe
@@ -7,10 +8,11 @@
  */
 
 /**
-* Initializes and returns the noise function
-*
-*/
-const createNoise = (getRandomNumber?: () => number): (x: number, y: number) => number => {
+ * Initializes and returns the noise function
+ */
+const createNoise = (
+  getRandomNumber?: () => number,
+): ((x: number, y: number) => number) => {
   if (getRandomNumber === undefined) getRandomNumber = Math.random
 
   const grad3 = [
@@ -27,18 +29,22 @@ const createNoise = (getRandomNumber?: () => number): (x: number, y: number) => 
     [0, 1, -1],
     [0, -1, -1],
   ]
-  const p = []
+  const p: number[] = []
   for (let i = 0; i < 256; i++) {
     p[i] = Math.floor(getRandomNumber() * 256)
   }
   // To remove the need for index wrapping, double the permutation table length
-  const perm: any[] = []
+  const perm: number[] = []
   for (let i = 0; i < 512; i++) {
     perm[i] = p[i & 255]
   }
 
-  const noise = function (xin: number, yin: number) {
-    let n0, n1, n2 // Noise contributions from the three corners
+  function getNoise(xin: number, yin: number) {
+    // Noise contributions from the three corners
+    let n0: undefined | number
+    let n1: undefined | number
+    let n2: undefined | number
+
     // Skew the input space to determine which simplex cell we're in
     let F2 = 0.5 * (Math.sqrt(3.0) - 1.0)
     let s = (xin + yin) * F2 // Hairy factor for 2D
@@ -52,7 +58,8 @@ const createNoise = (getRandomNumber?: () => number): (x: number, y: number) => 
     let y0 = yin - Y0
     // For the 2D case, the simplex shape is an equilateral triangle.
     // Determine which simplex we are in.
-    let i1, j1 // Offsets for second (middle) corner of simplex in (i,j) coords
+    let i1: undefined | number
+    let j1: undefined | number // Offsets for second (middle) corner of simplex in (i,j) coords
     if (x0 > y0) {
       i1 = 1
       j1 = 0
@@ -98,10 +105,10 @@ const createNoise = (getRandomNumber?: () => number): (x: number, y: number) => 
     return 70.0 * (n0 + n1 + n2)
   }
 
-  return noise
+  return getNoise
 }
 
-const dot = function (g: any, x: any, y: any) {
+const dot = function (g: number[], x: number, y: number) {
   return g[0] * x + g[1] * y
 }
 

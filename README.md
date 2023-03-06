@@ -3,12 +3,12 @@
 > 2D Perlin simplex noise
 
 ## :sparkles: Features
- 
-  - Seedable
-  - Fully typed
-  - ESM
-  - Supports custom random generators
-  
+
+- Seedable
+- Fully typed
+- ESM
+- Supports custom random generators
+
 ## How to use
 
 TODO
