@@ -15,7 +15,7 @@ TODO
 
 ## Install
 
-```sh
+```console
 npm install noise-2d
 ```
 
