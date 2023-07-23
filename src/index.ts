@@ -10,11 +10,12 @@
 /**
  * Initializes and returns the noise function
  */
-const createNoise = (
+export default function createNoise(
+  /**
+   * A function that returns a value between 0 and 1
+   */
   getRandomNumber?: () => number,
-): ((x: number, y: number) => number) => {
-  if (getRandomNumber === undefined) getRandomNumber = Math.random
-
+): (x: number, y: number) => number {
   const grad3 = [
     [1, 1, 0],
     [-1, 1, 0],
@@ -31,7 +32,7 @@ const createNoise = (
   ]
   const p: number[] = []
   for (let i = 0; i < 256; i++) {
-    p[i] = Math.floor(getRandomNumber() * 256)
+    p[i] = Math.floor(getRandomNumber ? getRandomNumber() : Math.random() * 256)
   }
   // To remove the need for index wrapping, double the permutation table length
   const perm: number[] = []
@@ -108,8 +109,6 @@ const createNoise = (
   return getNoise
 }
 
-const dot = function (g: number[], x: number, y: number) {
+function dot(g: number[], x: number, y: number) {
   return g[0] * x + g[1] * y
 }
-
-export default createNoise
