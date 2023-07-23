@@ -13,10 +13,12 @@
   ],
   "scripts": {
     "build": "tsc",
+    "release": "npm run build && np --no-tests",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "prettier": "prettier-config-one",
   "devDependencies": {
+    "np": "8.0.4",
     "prettier": "3.0.0",
     "prettier-config-one": "0.2.0",
     "tsconfig-one": "0.0.8",
