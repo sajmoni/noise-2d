@@ -1,6 +1,6 @@
 {
   "name": "noise-2d",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "2D Perlin simplex noise",
   "keywords": [],
   "license": "MIT",
